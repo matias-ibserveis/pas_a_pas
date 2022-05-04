@@ -1,7 +1,12 @@
 import '../styles/globals.css'
+import Page from '../components/Page'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+export default function MyApp({ Component, pageProps }) {
+  return (
+  
+    <Page nombre={"prueba"}>
+      <Component {...pageProps} />
+    </Page>
+
+    )
 }
-
-export default MyApp

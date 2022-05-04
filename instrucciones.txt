@@ -1,0 +1,27 @@
+1) npx create-next-app@latest
+
+√ What is your project named? ... pas_a_pas
+
+https://nextjs.org/docs/api-reference/create-next-app
+
+
+2)  Explicaciones en video:
+
+Enlace a video 3:  
+https://drive.google.com/file/d/1r6t435Hni99CVSJt9qJuUeuFdqc3L3U5/view?usp=sharing
+
+Enlace video 4:  
+https://drive.google.com/file/d/1zHY9F_wrbPSkwNA3YsMCYzZnG3nMet_U/view?usp=sharing
+
+Enlace video 5:
+https://drive.google.com/file/d/1toDVqVFmej4FEPxd1yP-YQwCAWN1EGLX/view?usp=sharing
+
+
+
+
+Error con eslint:  https://stackoverflow.com/questions/68163385/parsing-error-cannot-find-module-next-babel
+
+
+
+
+
