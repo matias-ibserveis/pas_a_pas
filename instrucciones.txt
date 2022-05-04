@@ -17,9 +17,17 @@ Enlace video 5:
 https://drive.google.com/file/d/1toDVqVFmej4FEPxd1yP-YQwCAWN1EGLX/view?usp=sharing
 
 
-
-
 Error con eslint:  https://stackoverflow.com/questions/68163385/parsing-error-cannot-find-module-next-babel
+
+
+3) styled-components: 
+npm install --save styled-components
+https://styled-components.com/docs/basics#installation
+
+
+4) nprogress:  npm install --save nprogress
+
+
 
 
 
