@@ -28,8 +28,8 @@ https://styled-components.com/docs/basics#installation
 4) nprogress:  npm install --save nprogress
 
 
-5) 
-4) Prisma
+ 
+5) Prisma
 
   https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/mongodb-typescript-mongodb
 
@@ -68,6 +68,28 @@ https://styled-components.com/docs/basics#installation
   6. Para abrir la base y poder ver e introducir datos, ejecutar : 
   npm run studio
   (introducir 1 user de prueba y un producto relacionado)
+
+
+
+
+  6) APOLLO GRAPHQL
+
+  APOLLO Client :  npm i @apollo/client
+  Nextjs: https://www.apollographql.com/blog/apollo-client/next-js/building-a-next-js-app-with-slash-graphql/ 
+
+  APOLLO SERVER:    npm i apollo-server-micro micro graphql
+  https://lyonwj.com/blog/graphql-server-next-js-neo4j-aura-vercel
+
+
+  SSR : https://blog.codepen.io/2021/09/01/331-next-js-apollo-server-side-rendering-ssr/
+
+  Posibilidad para estudiar (graphql as service):  https://neo4j.com/cloud/aura/
+  https://blog.graphqleditor.com/slash-graphql
+  https://graphqleditor.com/
+  https://dgraph.io/graphql/
+
+
+ 
 
 
 
