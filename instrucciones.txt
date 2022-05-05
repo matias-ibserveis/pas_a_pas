@@ -28,6 +28,48 @@ https://styled-components.com/docs/basics#installation
 4) nprogress:  npm install --save nprogress
 
 
+5) 
+4) Prisma
+
+  https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/mongodb-typescript-mongodb
+
+  npm i prisma
+  npm install @prisma/client
+  npx prisma init
+
+
+  añadir en package.json:    "scripts": {
+      ...
+      "migrate": "prisma migrate dev --name 1online",
+      "generate": "prisma generate",
+      "studio": "prisma studio"
+    },
+
+
+  CREAR DATABASE en ELEPHANTSQL.  Copiar la dirección de la database
+
+
+  Next steps:
+  1. Set the DATABASE_URL in the .env file to point to your existing database. If your database has no tables yet, read https://pris.ly/d/getting-started
+  
+  2. Set the provider of the datasource block in schema.prisma to match your database: postgresql, mysql, sqlite, sqlserver or mongodb (Preview).
+  
+  3. Definir los models (tablas) en el  archivo schema.prisma
+
+  4. npm run generate   to generate the Prisma Client. You can then start querying your database.  
+                        primero generate, luego PUSH:  https://github.com/prisma/prisma/issues/4571
+  
+  5. npx prisma db push
+
+
+  (Si hubiera ya database ya hecha ->  3. Run   prisma db pull   to turn your database schema into a Prisma schema.)
+  
+
+  6. Para abrir la base y poder ver e introducir datos, ejecutar : 
+  npm run studio
+  (introducir 1 user de prueba y un producto relacionado)
+
+
 
 
 

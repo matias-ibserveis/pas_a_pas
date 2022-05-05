@@ -6,11 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate": "prisma migrate dev --name 1online",
+    "generate": "prisma generate",
+    "studio": "prisma studio"
   },
   "dependencies": {
+    "@prisma/client": "^3.13.0",
     "next": "12.1.6",
     "nprogress": "^0.2.0",
+    "prisma": "^3.13.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "styled-components": "^5.3.5"
