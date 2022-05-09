@@ -89,6 +89,34 @@ https://styled-components.com/docs/basics#installation
   https://dgraph.io/graphql/
 
 
+
+
+  7) AUTH :  npm i next-auth 
+
+  CREAR usuario de pruebas con email REAL ->  npm run studio
+
+  https://medium.com/geekculture/why-and-how-to-get-started-with-next-auth-61740558b45b
+  pero....   hay que "ajustarlo" al provider de Google:
+  https://next-auth.js.org/getting-started/example
+
+  Y se puede utilizar https://console.cloud.google.com/apis/credentials      para crear ID y Password
+
+
+
+  OJO, los datos de google "secretos" estan en  .env.local  y no estan en la repo
+  https://stackoverflow.com/questions/55690143/what-is-the-difference-between-env-local-and-env-development-local
+
+  Para Prisma en .env.local: npm i dotenv-cli
+  https://stackoverflow.com/questions/70491569/how-to-set-environment-variables-with-prisma-nextjs-and-vercel
+
+
+
+
+
+
+
+
+
  
 
 

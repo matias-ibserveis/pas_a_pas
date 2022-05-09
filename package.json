@@ -19,6 +19,7 @@
     "graphql-scalars": "^1.17.0",
     "micro": "^9.3.4",
     "next": "12.1.6",
+    "next-auth": "^4.3.4",
     "nprogress": "^0.2.0",
     "prisma": "^3.13.0",
     "react": "18.1.0",

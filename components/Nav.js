@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import Signin from './Signin';
 
 export default function Nav() {
   return (
@@ -13,9 +14,7 @@ export default function Nav() {
         <a title="subir nuevo"> ➕ Nuevo </a>
       </Link>
 
-      <Link href="/account" passHref>
-        <a title="mi cuenta"> Mi cuenta </a>
-      </Link>
+      <Signin />
       
     </NavStyles>
   );
