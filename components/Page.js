@@ -2,19 +2,17 @@ import Header from "./Header";
 import styled, { createGlobalStyle } from "styled-components";
 
 export default function Page(props) {
-  const { children } = props;
-
+  const {children} = props
+  
   return (
     <div>
-      <GlobalStyles />
-      <Header />
+    <GlobalStyles />
+    <Header />
       <h2>I am the page component</h2>
-      <InnerStyles>{children}</InnerStyles>
+    <InnerStyles>{children}</InnerStyles>
     </div>
-  );
+  )
 }
-
-
 
 const GlobalStyles = createGlobalStyle`
   @font-face {
@@ -23,14 +21,17 @@ const GlobalStyles = createGlobalStyle`
     font-weight: normal;
     font-style: normal;
   }
+
   html {
-    --red: #ff0000;
+    --red: #ffb606;
+    --green: #008000;
     --black: #393939;
     --grey: #3A3A3A;
     --gray: var(--grey);
     --lightGrey: #e1e1e1;
     --lightGray: var(--lightGrey);
-    --offWhite: #ededed;
+    --offWhite: #fdfbf2;
+    --offOrange: #fdd08e;
     --maxWidth: 1000px;
     --bs: 0 12px 24px 0 rgba(0,0,0,0.09);
     box-sizing: border-box;
@@ -40,23 +41,29 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'radnika_next', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     padding: 0;
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1rem;
     line-height:2;
   }
+
   a {
     text-decoration: none;
     color: var(---black);
   }
+
   a:hover {
     text-decoration: underline;
   }
+
   button {
     font-family: 'radnika_next', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
   }
 `;
+
 
 const InnerStyles = styled.div`
   max-width: var(--maxWidth);
   margin: 0 auto;
   padding: 2rem;
 `;
+
+
