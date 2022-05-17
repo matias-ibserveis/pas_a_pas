@@ -4,7 +4,7 @@ export default function IndexPage() {
     <>
       <p>Hello!</p>
       <code>ejemplo de texto - var</code>
-      <p>I am a child</p>
+      <p>Index page</p>
     </>
   );
 }

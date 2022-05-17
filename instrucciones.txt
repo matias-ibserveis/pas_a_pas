@@ -111,8 +111,12 @@ https://styled-components.com/docs/basics#installation
 
 
 
+8)  ANTES de cambiar schema.prisma -> Borrar datos de productos (npm run studio)
 
-
+    Actualizar archivo   schema.prisma 
+    2º)  npx prisma db push
+   
+http://localhost:3000/sell -> subir producto  -> comprobar en (npm run studio) que ha entrado producto en BaseDatos
 
 
 

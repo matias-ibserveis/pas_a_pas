@@ -1,13 +1,13 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-generator client {
-  provider = "prisma-client-js"
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
 }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+generator client {
+  provider = "prisma-client-js"
 }
 
 model User {
@@ -25,11 +25,20 @@ model Product {
   ref      String    @unique  
   name     String
   description    String 
+  status   String   
   categoria String
   price    Float
+  price2   Float
+  pricetext    String  
+  enlace   String
   photo    String
+  photo2   String
+  photo3   String
+  photo4   String
   userEmail   String   
   user      User     @relation(fields: [userEmail], references: [email])
 }
+
+
 
 

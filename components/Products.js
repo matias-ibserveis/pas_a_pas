@@ -12,14 +12,26 @@ export const ALL_PRODUCTS_QUERY = gql`
       ref
       name
       description
+      status
       categoria
       price
+      price2
+      pricetext
+      enlace
+      photo
+      photo2
+      photo3
+      photo4
     }
   }
 `;
 
 export default function Products() {
-  const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY);
+  
+  const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY,
+    { fetchPolicy: "cache-and-network", nextFetchPolicy: "cache-first" } 
+  );
+
   console.log(data, error, loading);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;

@@ -2,17 +2,18 @@ import Header from "./Header";
 import styled, { createGlobalStyle } from "styled-components";
 
 export default function Page(props) {
-  const {children} = props
-  
+  const { children } = props;
+
   return (
     <div>
-    <GlobalStyles />
-    <Header />
-      <h2>I am the page component</h2>
-    <InnerStyles>{children}</InnerStyles>
+      <GlobalStyles />
+      <Header />
+      <InnerStyles>{children}</InnerStyles>
     </div>
-  )
+  );
 }
+
+
 
 const GlobalStyles = createGlobalStyle`
   @font-face {
@@ -59,11 +60,8 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-
 const InnerStyles = styled.div`
   max-width: var(--maxWidth);
   margin: 0 auto;
   padding: 2rem;
 `;
-
-
