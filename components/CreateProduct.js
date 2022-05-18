@@ -5,6 +5,10 @@ import Form from './styles/Form';
 import { useSession } from "next-auth/react";
 import Router from 'next/router';
 import { ALL_PRODUCTS_QUERY } from './Products'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useState,useEffect } from "react"
+import Editor from "../components/CKEcomponent"
 
 // refetchQueries: https://github.com/apollographql/apollo-client/issues/3633
 // " agilepapplications: first define appropriate cache policies:"
@@ -57,6 +61,11 @@ export default function CreateProduct() {
   const { data: session, status } = useSession()
   const ahora = new Date()
 
+  const [editorLoaded, setEditorLoaded] = useState(false);                                      
+  useEffect(() => {
+    setEditorLoaded(true);
+  }, []);
+
   const { inputs, handleChange, clearForm, resetForm } = useForm({
     id:'', createdAt:ahora, ref:'', name:'', price: 0, price2: 0, pricetext: '', 
     enlace:'', description:'', categoria:'', photo: '../images/default_image.jpg', 
@@ -77,19 +86,23 @@ export default function CreateProduct() {
     <Form
       onSubmit={async (e) => {
         e.preventDefault();
-        console.log("inputs en FORM", inputs);
-        // Submit the inputfields to the backend:
+        //console.log("inputs en FORM", inputs);
+     
         if (session) {
           inputs.userEmail = session?.user?.email || "no hay"
           const res = await createProduct();
+          console.log("res", res)
           
           Router.push({
-            pathname: `/products`,
+            pathname: `/product/${res.data.createProduct.ref}`,
           });
         
         }
         else {
-         console.log("Registrate para subir un curso")
+          toast.error("Registrate para subir un producto", {
+            theme: "colored"
+          })
+
         }
 
         clearForm();
@@ -135,13 +148,12 @@ export default function CreateProduct() {
 
         <label htmlFor="description">
           Description
-          <textarea
-            id="description"
+          <Editor
             name="description"
-            placeholder="Description"
-            value={inputs.description}
-            onChange={handleChange}
-          />
+            onChange={(data) => {
+              inputs.description = data;
+            } }
+            editorLoaded={editorLoaded} value={undefined}         />
         </label>
 
         <label htmlFor="categoria">

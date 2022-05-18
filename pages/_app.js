@@ -2,6 +2,8 @@ import NProgress from 'nprogress';
 import Router from 'next/router';
 import Page from '../components/Page';
 import '../components/styles/nprogress.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { ApolloProvider } from "@apollo/client";
 import { useApollo } from "../lib/apolloClient";
@@ -24,6 +26,13 @@ export default function MyApp({ Component, pageProps }) {
     <ApolloProvider client={apolloClient}>
       <Page>
         <Component {...pageProps} />
+        <ToastContainer
+          position="top-center"
+          autoClose={2500}
+          hideProgressBar={true}
+          newestOnTop={true}
+          closeOnClick
+        />
       </Page>
     </ApolloProvider>
     </SessionProvider>

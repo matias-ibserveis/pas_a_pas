@@ -15,7 +15,19 @@ import prisma from '../../../lib/prisma'
           photo, photo2, photo3, photo4, userEmail
         }
     })
-    console.log("nuevo en prisma", nuevo)
+    //console.log("nuevo en prisma", nuevo)
+    return(nuevo)
+  }
+
+  
+  export async function unproducto(referencia) {
+    const producto = await prisma.product.findUnique({
+          where:{
+            ref:referencia
+          }
+    })
+    //console.log("unproducto en prisma", producto)
+    return (producto)
   }
 
 

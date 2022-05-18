@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.2",
+    "@ckeditor/ckeditor5-build-classic": "^34.0.0",
+    "@ckeditor/ckeditor5-react": "^5.0.1",
     "@prisma/client": "^3.13.0",
     "apollo-server-micro": "^3.6.8",
     "graphql": "^16.4.0",
@@ -24,6 +26,7 @@
     "prisma": "^3.13.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-toastify": "^9.0.1",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
