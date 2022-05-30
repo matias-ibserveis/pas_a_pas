@@ -31,11 +31,22 @@ import prisma from '../../../lib/prisma'
   }
 
 
+  export async function unusuario(correo) {
+    const usuario = await prisma.user.findUnique({
+          where:{
+            email:correo
+          }
+    })
+    return usuario
+  }
+
+
+
   export async function listadotodosproductos() {
     const lecturaproductos = await prisma.product.findMany({
       take:8,
       orderBy:{
-        name: "desc"
+        createdAt: "desc"
       }
     })
     return lecturaproductos
