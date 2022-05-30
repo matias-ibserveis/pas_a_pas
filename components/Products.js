@@ -2,54 +2,41 @@ import { useQuery } from "@apollo/client";
 import gql from "graphql-tag";
 import styled from "styled-components";
 import Product from "./Product";
-
-
-export const ALL_PRODUCTS_QUERY = gql`
-  query ALL_PRODUCTS_QUERY {
-    allProducts {
-      id
-      createdAt
-      ref
-      name
-      description
-      status
-      categoria
-      price
-      price2
-      pricetext
-      enlace
-      photo
-      photo2
-      photo3
-      photo4
-      userEmail   
-    }
-  }
-`;
+import { leerlistaproductos } from "../pages/func_client/api-client";
+import { useState, useEffect } from "react";
 
 export default function Products() {
-  
-  const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY,
-    { fetchPolicy: "cache-and-network", nextFetchPolicy: "cache-first" } 
-  );
+  const [productosLeidos, setproductosLeidos] = useState(["inicial"]);
 
-  console.log(data, error, loading);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  useEffect(() => {
+    async function empezarleerproductos() {
+      try {
+        const leeLista = await leerlistaproductos();
+        console.log("leelista", leeLista);
+        setproductosLeidos(leeLista);
+      } catch (error) {
+        console.log("error en try", error);
+      }
+    }
+    empezarleerproductos();
+  }, []);
 
-  return (
-    <div>
-      <ProductsListStyles>
-        {data.allProducts.map((elemento, clave) => (
-          // mejor elemento.id como Key
-          <Product key={clave} product={elemento} />
-        ))}
-      </ProductsListStyles>
-    </div>
-  );
+  const CrearLista = () => {
+    console.log("CrearLista");
+    return (
+      <div>
+        <ProductsListStyles>
+          {productosLeidos.map((elemento, clave) => (
+            // mejor elemento.id como Key
+            <Product key={clave} product={elemento} />
+          ))}
+        </ProductsListStyles>
+      </div>
+    );
+  };
+
+  return <>{productosLeidos?.length ? <CrearLista /> : false}</>;
 }
-
-
 
 
 const ProductsListStyles = styled.div`
@@ -72,8 +59,7 @@ const ProductsListStyles = styled.div`
   }
 
   button {
-    width:100%;
-    font-size:1.25rem;
+    width: 100%;
+    font-size: 1.25rem;
   }
-
 `;

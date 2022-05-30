@@ -34,7 +34,7 @@ export default function Product(props) {
             __html: product.description || "<p>descripción</p>",
           }}
         />
-          <Link href={`/user/${product.userEmail}`}>{product.userEmail}</Link>
+       
       </div>
 
 
