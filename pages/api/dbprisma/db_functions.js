@@ -20,10 +20,10 @@ import prisma from '../../../lib/prisma'
   }
 
   
-  export async function unproducto(referencia) {
+  export async function unproducto(identificador) {
     const producto = await prisma.product.findUnique({
           where:{
-            ref:referencia
+            id:identificador
           }
     })
     //console.log("unproducto en prisma", producto)

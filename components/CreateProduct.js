@@ -94,7 +94,7 @@ export default function CreateProduct() {
           console.log("res", res)
           
           Router.push({
-            pathname: `/product/${res.data.createProduct.ref}`,
+            pathname: `/product/${res.data.createProduct.id}`,
           });
         
         }
@@ -115,7 +115,7 @@ export default function CreateProduct() {
         
         <label htmlFor="ref">
           Ref
-          <input required type="text"
+          <input type="text"
             id="ref"
             name="ref"
             placeholder="Referencia"

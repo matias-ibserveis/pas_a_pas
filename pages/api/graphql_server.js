@@ -1,5 +1,5 @@
 import { ApolloServer, gql } from 'apollo-server-micro';
-import prisma from '../../lib/prisma'
+
 import {nuevoproducto, listadotodosproductos, unproducto} from '../api/dbprisma/db_functions'
 
 const { DateTimeResolver } = require('graphql-scalars')
@@ -27,7 +27,7 @@ const typeDefs = gql`
 
   type Query {
     allProducts: [Producto]
-    singleProduct(referencia: String!): Producto
+    singleProduct(identificador: String!): Producto
   }
 
   input ProductInput {
@@ -64,8 +64,8 @@ const resolvers = {
       return listaproductos
     },
 
-    singleProduct: async (root, {referencia}) => {
-      const respuesta = await unproducto(referencia)
+    singleProduct: async (root, {identificador}) => {
+      const respuesta = await unproducto(identificador)
       //console.log("singleProduct en server", respuesta)
       return respuesta
     },

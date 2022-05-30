@@ -6,8 +6,8 @@ import DisplayError from './ErrorMessage';
 import { ParsedUrlQuery } from 'querystring';
 
 const SINGLE_ITEM_QUERY = gql`
-  query singleProduct($referencia: String!) {
-    singleProduct(referencia: $referencia ) {
+  query singleProduct($identificador: String!) {
+    singleProduct(identificador: $identificador ) {
       id
       ref
       name
@@ -24,14 +24,14 @@ const SINGLE_ITEM_QUERY = gql`
   }
 `;
 
-export default function SingleProduct( {referencia} ) {
+export default function SingleProduct( {identificador} ) {
 
  // const {referencia} = props
 // console.log("referencia em singleprodu", referencia)
 
   const { data, loading, error } = useQuery(SINGLE_ITEM_QUERY, {
     variables: {
-      referencia,
+      identificador,
     },
   });
   

@@ -8,8 +8,8 @@ export default function SingleProductPage() {
 
 
   const router = useRouter()
-  const {ref}= router.query
+  const {id}= router.query
 
 
-  return <SingleProduct referencia={ref} />
+  return <SingleProduct identificador={id} />
 }
