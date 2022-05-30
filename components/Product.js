@@ -34,13 +34,13 @@ export default function Product(props) {
             __html: product.description || "<p>descripción</p>",
           }}
         />
-       
       </div>
-
-
     </FichaStyles>
   );
 }
+
+
+
 
 // https://www.quackit.com/css/flexbox/examples/flexbox_cards.cfm?utm_source=pocket_mylist
 const FichaStyles = styled.div`

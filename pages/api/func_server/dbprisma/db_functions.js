@@ -10,10 +10,10 @@ export async function listadotodosproductos() {
   return lecturaproductos;
 }
 
-export async function unproducto(identificador) {
+export async function unproducto(id_producto) {
   const producto = await prisma.product.findUnique({
     where: {
-      id: identificador,
+      id: id_producto,
     },
   });
   //console.log("unproducto en prisma", producto)
