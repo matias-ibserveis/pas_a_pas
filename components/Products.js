@@ -22,6 +22,7 @@ export const ALL_PRODUCTS_QUERY = gql`
       photo2
       photo3
       photo4
+      userEmail   
     }
   }
 `;
@@ -53,6 +54,26 @@ export default function Products() {
 
 const ProductsListStyles = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 60px;
+  grid-template-columns: 1fr;
+  grid-gap: 3rem;
+  padding: 0.25rem;
+  margin-top: 1rem;
+  background-color: white;
+
+  @media (min-width: 800px) {
+    grid-template-columns: 1.1fr 1fr;
+    padding: 1rem;
+    align-items: flex-start;
+  }
+
+  @media (min-width: 1360px) {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+  }
+
+  button {
+    width:100%;
+    font-size:1.25rem;
+  }
+
 `;

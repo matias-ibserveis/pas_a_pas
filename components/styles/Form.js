@@ -13,48 +13,55 @@ const loading = keyframes`
 `;
 
 const Form = styled.form`
+
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
   background: rgba(0, 0, 0, 0.02);
-  border: 5px solid white;
-  padding: 20px;
-  font-size: 1.5rem;
-  line-height: 1.5;
-  font-weight: 600;
+  border: 1px solid white;
+  padding: 0.15rem;
+  font-size: 1rem;
+  line-height: 1;
+  max-width:700px;
   label {
     display: block;
-    margin-bottom: 1rem;
+    margin: 0.5rem 0.15rem ;
   }
   input,
   textarea,
   select {
-    width: 100%;
-    padding: 0.5rem;
+    display: block;
+    width: 98%;
+    padding: 0.75rem 0.25rem;
+    margin: 0rem ;
     font-size: 1rem;
     border: 1px solid black;
     &:focus {
       outline: 0;
-      border-color: var(--red);
+      border-color: var(--green);
     }
   }
   button,
   input[type='submit'] {
-    width: auto;
-    background: red;
-    color: white;
+    background: green;
+    color:  var(--lightGrey);
+    font-size: 1.1rem;
     border: 0;
-    font-size: 2rem;
-    font-weight: 600;
-    padding: 0.5rem 1.2rem;
+    margin: 1rem 1rem;
+    padding: 0.75rem 1.2rem;
+    cursor: pointer;
+    &:hover {
+      color: white;
+    }
   }
+  
   fieldset {
     border: 0;
     padding: 0;
 
     &[disabled] {
-      opacity: 0.5;
+      opacity: 0.7;
     }
     &::before {
-      height: 10px;
+      height: 4px;
       content: '';
       display: block;
       background-image: linear-gradient(

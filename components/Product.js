@@ -8,48 +8,79 @@ import Image from "next/image";
 import imagenDefault from "../public/images/default_image.jpg";
 // ojo, Image "incompatible" con styled  https://nextjs.org/docs/basic-features/image-optimization#image-sizing
 
-
 export default function Product(props) {
   const { product } = props;
 
   return (
     <FichaStyles>
-      <div style={{ display: "block", width: "100%", height: "400px" }}>
-        <Image src={imagenDefault} alt={product.name} layout="responsive" />
+      <div className="card" key={product.id}>
+        <PriceTag>
+          <Link href={`/product/${product.id}`}>
+            {formatMoney(product.price)}
+          </Link>
+        </PriceTag>
+
+        <img src={product.photo} alt={product.name} />
+
+        <Title>
+          <Link href={`/product/${product.id}`} passHref>
+            <a>{product.name}este</a>
+          </Link>
+        </Title>
+
+        <div
+          className="description"
+          dangerouslySetInnerHTML={{
+            __html: product.description || "<p>descripción</p>",
+          }}
+        />
+          <Link href={`/user/${product.userEmail}`}>{product.userEmail}</Link>
       </div>
 
-      <Title>
-        <Link href={`/product/${product.id}`} passHref>
-          <span>{product.name}</span>
-        </Link>
-      </Title>
 
-      <PriceTag>{formatMoney(product.price)}</PriceTag>
-      <p>{product.description}</p>
-
-      {/* TODO: Add buttons to edit and delte item */}
     </FichaStyles>
   );
 }
 
-
-
-
+// https://www.quackit.com/css/flexbox/examples/flexbox_cards.cfm?utm_source=pocket_mylist
 const FichaStyles = styled.div`
-  display: flex;
-  flex-direction: column;
-  position:relative;
-  background: white;
-  border: 1px solid var(--offWhite);
-  box-shadow: var(--bs);
-  
-  p {
-    line-height: 2;
-    font-weight: 300;
-    flex-grow: 1;
-    padding: 0 3rem;
-    font-size: 1.5rem;
+  .card {
+    background-image: linear-gradient(var(--red), white, white);
+    padding: 0.25rem;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    position: relative;
+    &:hover {
+      opacity: 1;
+      box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.3);
+    }
   }
 
+  .card img {
+    max-width: 100%;
+    opacity: 0.95;
+    padding: 0rem;
+    border-radius: 12px;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .card .text {
+    padding: 0 0.5rem;
+  }
+
+  .card .text > button {
+    background: gray;
+    border: 0;
+    color: white;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .description {
+    margin-top: 2rem;
+    font-size: 1rem;
   }
 `;

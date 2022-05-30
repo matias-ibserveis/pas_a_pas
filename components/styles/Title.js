@@ -1,20 +1,28 @@
 import styled from 'styled-components';
 
-const Title = styled.h3`
-  margin: 0 1rem;
-  text-align: center;
-  transform: skew(-5deg) rotate(-1deg);
-  margin-top: -3rem;
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+
+const Title = styled.div`
+  display:flex;
+  justify-content:center;
+  align-items:"flex-end";
+  gap:1rem;
+  font-family: 'Raleway-MediumItalic';
+  font-size: 1.5rem;
+  padding: 0 1rem 0 0;
+  margin:1rem 0 1rem 2.5rem;
+  
   a {
-    background: var(--red);
     display: inline;
-    line-height: 1.3;
-    font-size: 4rem;
-    text-align: center;
-    color: white;
-    padding: 0 1rem;
+    color: black;
+    text-decoration:underline;
+    
+    &:hover {
+      color:var(--red);
+    }
   }
+ 
+  
 `;
+
 
 export default Title;

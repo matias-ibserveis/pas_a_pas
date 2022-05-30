@@ -1,17 +1,21 @@
 import styled from 'styled-components';
 
-const PriceTag = styled.span`
+const PriceTag = styled.h5`
+position:absolute;
+margin: 0 0rem 0 70%;
+z-index: 10;
+transform: skew(-5deg) rotate(-10deg);
+text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+a {
   background: var(--red);
-  transform: rotate(3deg);
+  font-size: 1.5rem;
+  text-align: center;
   color: white;
-  font-weight: 600;
-  padding: 5px;
-  line-height: 1;
-  font-size: 3rem;
-  display: inline-block;
-  position: absolute;
-  top: -3px;
-  right: -3px;
+  padding: 0 1rem;
+}
+
 `;
+
+
 
 export default PriceTag;
