@@ -3,32 +3,37 @@ import gql from 'graphql-tag';
 import Head from 'next/head';
 import styled from 'styled-components';
 import DisplayError from './ErrorMessage';
+import { ParsedUrlQuery } from 'querystring';
 import Carousel from '../components/miSlide'
+import { useSession } from "next-auth/react";
+import Link from 'next/link';
 
-
-const SINGLE_ITEM_QUERY = gql`
+export const SINGLE_ITEM_QUERY = gql`
   query singleProduct($identificador: String!) {
     singleProduct(identificador: $identificador ) {
       id
       ref
       name
       description
-      price
       status
+      categoria
+      price
+      price
+      pricetext
       enlace
-      userEmail
       photo
       photo2
       photo3
       photo4
+      userEmail
     }
   }
 `;
 
-export default function SingleProduct( {identificador} ) {
+export default function SingleProduct( {identificador}) {
 
- // const {referencia} = props
-// console.log("referencia em singleprodu", referencia)
+  const { data: session, status } = useSession()
+  console.log("session inicio",session)
 
   const { data, loading, error } = useQuery(SINGLE_ITEM_QUERY, {
     variables: {
@@ -39,9 +44,29 @@ export default function SingleProduct( {identificador} ) {
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
   const { singleProduct } = data;
-  //console.log("data", data);
+
   
-  
+  const VerUpdate = () => {
+    if (status === "authenticated") {
+      if (session?.user?.email === singleProduct.userEmail) {
+      return (
+        <div className="buttonList">
+          <Link href={`/update/${singleProduct.id}`}>
+              Editar producto ✏️
+          </Link>
+        </div>
+      )
+      }
+      else return (
+       <p>Propietario; {singleProduct.userEmail}</p>
+    )
+    }
+    else return (
+      <p>Hola! usuario</p>
+    )
+  }
+
+
   const Details = () => {
     return (
         <div className="details" >
@@ -64,6 +89,8 @@ export default function SingleProduct( {identificador} ) {
       </div>
 
       <Details/>
+
+      <VerUpdate />
 
     </SingleProductStyles>
   );

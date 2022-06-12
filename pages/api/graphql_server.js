@@ -4,12 +4,14 @@ import {
   nuevoproducto,
   listadotodosproductos,
   unproducto,
+  updateproducto,
   unusuario,
 } from "../api/dbprisma/db_functions";
 
 const { DateTimeResolver } = require("graphql-scalars");
 
 const typeDefs = gql`
+
   type Producto {
     id: String!
     createdAt: DateTime!
@@ -21,7 +23,7 @@ const typeDefs = gql`
     price: Float
     price2: Float
     pricetext: String
-    enlace: String
+    enlace: String!
     photo: String
     photo2: String
     photo3: String
@@ -43,6 +45,7 @@ const typeDefs = gql`
   }
 
   input ProductInput {
+    id: String!
     ref: String!
     name: String!
     description: String!
@@ -51,7 +54,7 @@ const typeDefs = gql`
     price: Float
     price2: Float
     pricetext: String
-    enlace: String
+    enlace: String!
     photo: String
     photo2: String
     photo3: String
@@ -61,6 +64,7 @@ const typeDefs = gql`
 
   type Mutation {
     createProduct(data: ProductInput): Producto
+    updateProduct(data: ProductInput): Producto
   }
 
   scalar DateTime
@@ -81,11 +85,10 @@ const resolvers = {
       return respuesta;
     },
 
-    singleUser: async (root, {email}) => {
-      const respuesta = await unusuario(email)
-      return respuesta
-    }
-    
+    singleUser: async (root, { email }) => {
+      const respuesta = await unusuario(email);
+      return respuesta;
+    },
   },
 
   Mutation: {
@@ -94,6 +97,13 @@ const resolvers = {
       const nuevo = await nuevoproducto(data);
       return nuevo;
     },
+
+    updateProduct: async (root, {data}) => {
+      const modif = await updateproducto(data)
+      console.log("modif en server", modif)
+      return modif
+    }
+
   },
 };
 

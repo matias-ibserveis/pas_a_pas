@@ -53,3 +53,20 @@ import prisma from '../../../lib/prisma'
   }
 
 
+  
+  export async function updateproducto(data) {
+    const {id, ref, name, description, price, price2, pricetext, enlace,
+           userEmail, photo, photo2, photo3, photo4} = data
+    const modificar = await prisma.product.update({
+    where:{   
+        id:id,
+      },    
+     data:{
+          id, ref, name, description, price, price2, pricetext, enlace, userEmail, photo, photo2, photo3, photo4
+        }
+    })
+    //console.log("modif en prisma", modif)
+    return(modificar)
+  }
+
+
