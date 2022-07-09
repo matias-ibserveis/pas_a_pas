@@ -1,10 +1,22 @@
+import ListIndex from "../components/List_index"
+import Link from 'next/link';
+
 export default function IndexPage() {
-  
   return (
-    <>
-      <p>Hello!</p>
-      <code>ejemplo de texto - var</code>
-      <p>Index page</p>
-    </>
-  );
+    <div style={{maxWidth:'640px', display:'flex', flexWrap:'wrap' 
+                               , justifyContent:'center'
+                               , backgroundColor:'white'
+                               , margin: ' 0 auto'
+                               , width: '98%'
+                }}>
+      <div>
+        <h2>Más recientes:</h2>
+      </div>
+  
+      <ListIndex/>
+      
+     
+    </div>
+
+  )
 }

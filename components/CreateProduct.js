@@ -16,6 +16,7 @@ import Editor from "../components/CKEcomponent"
 const CREATE_PRODUCT_MUTATION = gql`
   mutation CREATE_PRODUCT_MUTATION(
     # Which variables are getting passed in? And What types are they
+    $id: String!
     $ref: String!
     $name: String!
     $description: String!
@@ -23,7 +24,7 @@ const CREATE_PRODUCT_MUTATION = gql`
     $price: Float!
     $price2:  Float
     $pricetext: String  
-    $enlace:  String
+    $enlace:  String!
     $photo: String!
     $photo2: String!
     $photo3:   String
@@ -32,6 +33,7 @@ const CREATE_PRODUCT_MUTATION = gql`
   ) {
     createProduct(
       data: {
+        id: $id
         ref: $ref
         name: $name
         description: $description
@@ -67,8 +69,8 @@ export default function CreateProduct() {
   }, []);
 
   const { inputs, handleChange, clearForm, resetForm } = useForm({
-    id:'', createdAt:ahora, ref:'', name:'', price: 0, price2: 0, pricetext: '', 
-    enlace:'', description:'', categoria:'', photo: '../images/default_image.jpg', 
+    id:'000', createdAt:ahora, ref:'', name:'', price: 0, price2: 0, pricetext: '', 
+    enlace:'no hay enlace', description:'', categoria:'', photo: '../images/default_image.jpg', 
     photo2: '../images/default_image.jpg', photo3: '../images/default_image.jpg', photo4: '../images/default_image.jpg', 
     userEmail: ''
   });

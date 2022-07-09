@@ -69,4 +69,29 @@ import prisma from '../../../lib/prisma'
     return(modificar)
   }
 
+  export async function deleteproducto(identificador) {
+    console.log("unproducto", identificador)
+    const producto = await prisma.product.delete({
+          where:{
+            id:identificador
+          }
+    })
+      return producto
+  }
+
+
+  export async function listado_n_productos(numero) {
+    // QUERY RAW
+    // https://www.prisma.io/docs/concepts/components/prisma-client/raw-database-access
+    // https://www.cybertec-postgresql.com/en/postgresql-limit-vs-fetch-first-rows-with-ties/
+  
+    //`SELECT * FROM "public"."Product" LIMIT ${numero}`
+    const result = await prisma.$queryRaw`SELECT * FROM "public"."Product" FETCH FIRST ${numero} ROWS ONLY `
+    return result
+  }
+
+
+
+
+
 

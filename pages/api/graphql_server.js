@@ -1,5 +1,7 @@
 import { ApolloServer, gql } from "apollo-server-micro";
 
+import {listado_n_productos, deleteproducto} from '../api/dbprisma/db_functions'
+
 import {
   nuevoproducto,
   listadotodosproductos,
@@ -40,6 +42,7 @@ const typeDefs = gql`
 
   type Query {
     allProducts: [Producto]
+    nProducts(numero: Int!): [Producto]
     singleProduct(identificador: String!): Producto
     singleUser(email: String!): User
   }
@@ -65,6 +68,7 @@ const typeDefs = gql`
   type Mutation {
     createProduct(data: ProductInput): Producto
     updateProduct(data: ProductInput): Producto
+    deleteProduct(identificador: String!): Producto
   }
 
   scalar DateTime
@@ -77,6 +81,11 @@ const resolvers = {
     allProducts: () => {
       const listaproductos = listadotodosproductos();
       return listaproductos;
+    },
+
+    nProducts: async (root, {numero}) => {
+      const respuesta = await listado_n_productos(numero)
+      return respuesta
     },
 
     singleProduct: async (root, { identificador }) => {
@@ -93,7 +102,7 @@ const resolvers = {
 
   Mutation: {
     createProduct: async (root, { data }) => {
-      //console.log("datainput en graphserver", data)
+      console.log("datainput en graphserver", data)
       const nuevo = await nuevoproducto(data);
       return nuevo;
     },
@@ -102,6 +111,11 @@ const resolvers = {
       const modif = await updateproducto(data)
       console.log("modif en server", modif)
       return modif
+    },
+
+    deleteProduct: async (root, {identificador}) => {
+      const elimina = await deleteproducto(identificador)
+      return elimina
     }
 
   },

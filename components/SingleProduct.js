@@ -7,6 +7,8 @@ import { ParsedUrlQuery } from 'querystring';
 import Carousel from '../components/miSlide'
 import { useSession } from "next-auth/react";
 import Link from 'next/link';
+import DeleteProduct from '../components/DeleteProduct'
+
 
 export const SINGLE_ITEM_QUERY = gql`
   query singleProduct($identificador: String!) {
@@ -49,14 +51,19 @@ export default function SingleProduct( {identificador}) {
   const VerUpdate = () => {
     if (status === "authenticated") {
       if (session?.user?.email === singleProduct.userEmail) {
-      return (
-        <div className="buttonList">
-          <Link href={`/update/${singleProduct.id}`}>
-              Editar producto ✏️
-          </Link>
-        </div>
-      )
-      }
+        return (
+          <>
+          <div className="buttonList">
+            <Link href={`/update/${singleProduct.id}`}>
+                Editar producto ✏️
+            </Link>
+          </div>
+          <div style={{ marginTop:"2rem", display:"flex", justifyContent:"flex-end"}}>
+            <DeleteProduct identificador={singleProduct.id}>Eliminar Producto</DeleteProduct>
+         </div>
+         </>
+        )
+        }
       else return (
        <p>Propietario; {singleProduct.userEmail}</p>
     )
